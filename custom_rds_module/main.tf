@@ -6,7 +6,12 @@ provider "aws" {
 resource "aws_db_subnet_group" "db_subnet_group" {
   name       = local.db_subnet_group_name
   subnet_ids = local.db_subnet_ids
-  tags       = local.tags
+  tags = merge(
+    local.tags,
+    {
+      "Name" = local.db_subnet_group_name
+    },
+  )
 }
 
 module "postgres01" {
