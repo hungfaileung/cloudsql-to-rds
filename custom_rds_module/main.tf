@@ -9,8 +9,8 @@ resource "aws_db_subnet_group" "db_subnet_group" {
   tags       = local.tags
 }
 
-module "postgresql01" {
-  source = "./modules/aws-rds-postgresql"
+module "postgres01" {
+  source = "./modules/aws-rds-postgres"
 
   vpc_id                   = local.vpc_id
   ingress_with_cidr_blocks = local.ingress_with_cidr_blocks

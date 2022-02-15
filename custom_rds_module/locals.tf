@@ -9,7 +9,7 @@ locals {
       from_port   = 5432
       to_port     = 5432
       protocol    = "tcp"
-      description = "postgresql"
+      description = "postgres"
       cidr_blocks = "10.0.0.0/8"
     },
     {
@@ -31,9 +31,9 @@ locals {
   ]
 
   db_subnet_group_name = "${local.env}-dbsng"
-  db_subnet_ids = ["xxx", "xxxx", "xxx"]
+  db_subnet_ids        = ["xxx", "xxxx", "xxx"]
 
-  identifier              = "postgresql01-${local.env}"
+  identifier              = "postgres01-${local.env}"
   engine_version          = "11.14"
   family                  = "postgres11"
   instance_class          = "db.t3.micro"
