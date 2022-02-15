@@ -15,7 +15,7 @@ resource "aws_db_subnet_group" "db_subnet_group" {
 }
 
 module "postgres01" {
-  source = "./modules/aws-rds-postgres"
+  source = "./modules/aws-rds"
 
   vpc_id                   = local.vpc_id
   ingress_with_cidr_blocks = local.ingress_with_cidr_blocks
@@ -23,22 +23,25 @@ module "postgres01" {
 
   db_subnet_group_name = aws_db_subnet_group.db_subnet_group.name
 
-  identifier              = local.identifier
-  engine_version          = local.engine_version
-  family                  = local.family
-  instance_class          = local.instance_class
-  storage_type            = local.storage_type
-  iops                    = local.iops
-  allocated_storage       = local.allocated_storage
-  max_allocated_storage   = local.max_allocated_storage
-  username                = local.username
-  password                = local.password
-  port                    = local.port
-  multi_az                = local.multi_az
-  maintenance_window      = local.maintenance_window
-  backup_window           = local.backup_window
-  backup_retention_period = local.backup_retention_period
-  parameters              = local.parameters
+  identifier                      = local.identifier
+  engine                          = local.engine
+  engine_version                  = local.engine_version
+  family                          = local.family
+  instance_class                  = local.instance_class
+  storage_type                    = local.storage_type
+  iops                            = local.iops
+  allocated_storage               = local.allocated_storage
+  max_allocated_storage           = local.max_allocated_storage
+  username                        = var.username
+  password                        = var.password
+  port                            = local.port
+  multi_az                        = local.multi_az
+  maintenance_window              = local.maintenance_window
+  backup_window                   = local.backup_window
+  backup_retention_period         = local.backup_retention_period
+  performance_insights_enabled    = local.performance_insights_enabled
+  enabled_cloudwatch_logs_exports = local.enabled_cloudwatch_logs_exports
+  parameters                      = local.parameters
 
   tags = local.tags
 }

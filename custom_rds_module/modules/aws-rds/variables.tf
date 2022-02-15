@@ -62,11 +62,11 @@ variable "db_subnet_group_name" {
   default     = ""
 }
 
-# variable "engine" {
-#   description = "The database engine to use"
-#   type        = string
-#   default     = ""
-# }
+variable "engine" {
+  description = "The database engine to use"
+  type        = string
+  default     = ""
+}
 
 variable "engine_version" {
   description = "The engine version to use"
@@ -112,7 +112,7 @@ variable "multi_az" {
 variable "password" {
   description = "Password for the master DB user. Note that this may show up in logs, and it will be stored in the state file"
   type        = string
-  default     = null
+  sensitive   = true
 }
 
 variable "port" {
@@ -130,5 +130,17 @@ variable "storage_type" {
 variable "username" {
   description = "Username for the master DB user"
   type        = string
-  default     = null
+  sensitive   = true
+}
+
+variable "performance_insights_enabled" {
+  description = "Specifies whether Performance Insights are enabled"
+  type        = bool
+  default     = false
+}
+
+variable "enabled_cloudwatch_logs_exports" {
+  description = "List of log types to enable for exporting to CloudWatch logs. If omitted, no logs will be exported. Valid values (depending on engine): alert, audit, error, general, listener, slowquery, trace, postgresql (PostgreSQL), upgrade (PostgreSQL)."
+  type        = list(string)
+  default     = []
 }
