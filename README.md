@@ -11,3 +11,5 @@ terraform apply
 disable termination protection in console
 
 terraform destroy
+
+remove final snapshot & automatic snapshot in console
