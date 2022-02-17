@@ -2,14 +2,14 @@
 cd custom_rds_module
 set variables in ./local.tf and ./backend.tf
 
+export TF_VAR_username="xxxx"
+export TF_VAR_password="xxxx"
+
 samlaz
 
 terraform init
 
 terraform plan
-
-export TF_VAR_username="xxxx"
-export TF_VAR_password="xxxx"
 
 terraform apply
 
