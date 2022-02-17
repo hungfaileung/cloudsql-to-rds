@@ -1,4 +1,6 @@
 # cloudsql-to-rds
+cd custom_rds_module
+set variables in ./local.tf and ./backend.tf
 
 samlaz
 
